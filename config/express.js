@@ -15,11 +15,9 @@ module.exports = () => {
   //ENDPOINTS
   consign({ cwd: "api" })
     .then("data")
-    .then("controllers")
-    .then("routes")
+    .include("controller")
+    .include("routes")
     .into(app);
-
-  require("../api/routes/students")(app);
 
   return app;
 };
