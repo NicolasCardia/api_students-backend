@@ -27,5 +27,27 @@ module.exports = (app) => {
     }
   };
 
+  controller.deleteStudent = (req, res) => {
+    const { studentId } = req.params;
+    const foundCustomerIndex = studentsMock.data.findIndex(
+      (students) => students.id == studentId
+    );
+
+    if (foundCustomerIndex === -1) {
+      res.status(404).json({
+        message: "Cliente não encontrado na base.",
+        success: false,
+        students: studentsMock,
+      });
+    } else {
+      studentsMock.data.splice(foundCustomerIndex, 1);
+      res.status(200).json({
+        message: "cliente encontrado e deletado com sucesso!",
+        success: true,
+        students: studentsMock,
+      });
+    }
+  };
+
   return controller;
 };
