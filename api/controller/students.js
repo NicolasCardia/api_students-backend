@@ -49,5 +49,8 @@ module.exports = (app) => {
     }
   };
 
+  controller.updateStudent = (req, res) => {
+    const { studentId } = req.params;
+  };
   return controller;
 };
